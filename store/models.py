@@ -3,7 +3,7 @@ from django.db import models
 class Category(models.Model):
     """Representation of category in the store"""
 
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
 
 

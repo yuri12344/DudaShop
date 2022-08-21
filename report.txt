@@ -29,7 +29,6 @@ Running migrations:
   Applying authtoken.0003_tokenproxy... OK
   Applying sessions.0001_initial... OK
   Applying store.0001_initial... OK
-  Applying store.0002_product... OK
 System check identified no issues (0 silenced).
 test_category_call_shows_name_and_are_string (store.tests.CategoryModelTest) ... ok
 test_category_has_name_field (store.tests.CategoryModelTest) ... ok
@@ -42,7 +41,7 @@ test_can_retrieve_categories (store.tests.CategoryRequestTest) ... ok
 test_can_retrieve_one_category (store.tests.CategoryRequestTest) ... ok
 
 ----------------------------------------------------------------------
-Ran 9 tests in 0.425s
+Ran 9 tests in 0.419s
 
 OK
 Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
