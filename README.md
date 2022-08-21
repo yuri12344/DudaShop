@@ -22,9 +22,9 @@ $ cd duda-shop
 > Install modules via `VENV`  
 
 ```bash
-$ virtualenv env
-$ source env/bin/activate
-$ pip3 install -r requirements.txt
+$ python3 -m venv venv_prod
+$ source venv_prod/bin/activate
+$ pip3 install -r requirements/develop.txt
 ```
 
 <br />
@@ -53,9 +53,9 @@ At this point, the app runs at `http://127.0.0.1:8000/`.
 > Install modules via `VENV` (windows) 
 
 ```
-$ virtualenv env
-$ .\env\Scripts\activate
-$ pip3 install -r requirements.txt
+$ python -m venv_dev
+$ .\venv_dev\Scripts\activate
+$ pip3 install -r \requirements\develop.txt
 ```
 
 <br />
