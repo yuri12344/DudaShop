@@ -2,8 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from django.test import TestCase
 from rest_framework.test import APITestCase
-from .models import Category
-import ipdb
+from store.models import Category
 
 
 class CategoryModelTest(TestCase):
@@ -45,7 +44,7 @@ class CategoryModelTest(TestCase):
         self.assertIsInstance(self.category.name, str)
 
 
-class CategoryRequestTest(APITestCase):
+class CategoryRequestApiTest(APITestCase):
     def setUp(self):
         user = User.objects.create_superuser(username='user', password='password')
         token = Token.objects.create(user=user)
