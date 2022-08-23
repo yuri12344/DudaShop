@@ -1,9 +1,8 @@
-from rest_framework.routers import SimpleRouter
-from .views import CategoryView, ProductView
+from .views import CartView
+from django.urls import path
 
 
-router = SimpleRouter()
-
-router.register('cart', CategoryView)
-router.register('product', ProductView)
-
+urlpatterns = [
+    path('/', CartView.as_view(), name='cart_detail'),
+    path('/<int:product_id>', CartView.as_view(), name='cart_add_update_or_update'),
+]
