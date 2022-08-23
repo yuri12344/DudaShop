@@ -67,9 +67,5 @@ class ProductRequestApiTest(APITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertGreater(len(response.data), 0)
 
-    def test_product_update_request(self):
-        response = self.client.get(
-            reverse('store:product-list')
-        )
-        self.assertEqual(response.status_code, 200)
-    # TO DO - Solve problem with reverse
+    # TODO
+    # Create more tests
