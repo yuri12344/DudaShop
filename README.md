@@ -22,21 +22,13 @@ $ cd duda-shop
 > Install modules via `VENV`  
 
 ```bash
-$ python3 -m venv venv_prod
-$ source venv_prod/bin/activate
-$ pip3 install -r requirements/develop.txt
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip3 install -r requirements.txt
 ```
 
 <br />
 
-> Set Up Database
-
-```bash
-$ python manage.py makemigrations
-$ python manage.py migrate
-```
-
-<br />
 
 > Start the app
 
