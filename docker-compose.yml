@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  web:
+    container_name: web
+    build: .
+    restart: always
+    env_file:
+      - .env-docker
+    ports: 
+      - "8000:8000"
+    volumes:
+      - .:/app/
+    network_mode: host
