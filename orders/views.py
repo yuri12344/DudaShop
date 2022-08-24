@@ -35,33 +35,21 @@ class OrderViewSet(viewsets.ModelViewSet):
         if cart.get_total_quantity() == 0:
             return Response({"message": "your cart is empty"}, status=status.HTTP_400_BAD_REQUEST)
 
-        expected_return = [{
-         	"id": 14,
-         	"first_name": "Yuri",
-         	"last_name": "Caetano",
-         	"email": "yuuri.caetano@gmail.com",
-         	"address": "Rua Henriqe",
-         	"postal_code": "83060460",
-         	"city": "Sao Jose dos pinhais",
-            "product_details": []
-            }]
+        serializer = OrderSerializer(data=request.data)
+        
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        res = []
-
+        order = Order.objects.create(**serializer.data)
 
         for item in cart:
-            order_item = {
-                "order": "1",
-                "product": item['product'].name,
-                "price": int(item['price']),
-                "quantity": item['quantity']
-            }
-            res.append(order_item)
-            # OrderItem.objects.create(order=self.order, product=item['product'], price=item['price'], quantity=item['quantity'])
-        expected_return[0]['product_details'] = res
-        cart.clear()
+            price = int(item['product'].price)
+            quantity = item['quantity']
+            OrderItem.objects.create(order=order, product=item['product'], price=price, quantity=quantity)
 
-        return HttpResponse(json.dumps(expected_return), status=status.HTTP_201_CREATED)
+        # cart.clear()
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 """
     def create(self, request):
