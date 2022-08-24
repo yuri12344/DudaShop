@@ -5,12 +5,11 @@ services:
   app:
     container_name: duda_shop_django_app
     restart: always 
-    build: .
+    image: yuricaetano/dudashop:latest # Para compilar a local trocar para .
     volumes:
       - .:/django
     ports:
       - 8000:8000
-    image: app:django
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - db 
