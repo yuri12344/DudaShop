@@ -1,3 +1,18 @@
+# Duda Shop Online Clothing Store
+
+# How to use it
+
+- Docker
+
+- Local without docker
+
+python3 -m venv venv
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+
+
 # Duda Shop - Online Clothing Store
 
 This is the backend for the Duda Shop. Made with Django and Python, fast and escalable.

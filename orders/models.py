@@ -13,6 +13,7 @@ class Order(models.Model):
     paid=           models.BooleanField(default=False)
 
     class Meta:
+        db_table = 'order'
         ordering = ('-created',)
     
     def __str__(self):
@@ -37,6 +38,9 @@ class OrderItem(models.Model):
     
     def __str__(self):
         return str(self.id)
+    
+    class Meta:
+        db_table = 'order_item'
     
     def get_cost(self):
         return self.price * self.quantity

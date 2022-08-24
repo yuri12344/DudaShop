@@ -10,7 +10,7 @@ class Category(models.Model):
 
     class Meta:
         ordering = ('name',)
-        db_table = 'categories'
+        db_table = 'category'
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 

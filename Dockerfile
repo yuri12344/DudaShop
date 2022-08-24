@@ -1,7 +1,7 @@
 FROM python:3.10 as base
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED 1
 
 RUN python -m pip install --upgrade pip
@@ -27,6 +27,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app/
 
-RUN chmod +x scripts/entrypoint.sh
+RUN chmod +x entrypoint.sh
 
-ENTRYPOINT ["/app/scripts/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]

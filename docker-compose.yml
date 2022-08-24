@@ -1,14 +1,18 @@
-version: "3"
-
+version: "3.8"
 services:
-  web:
-    container_name: web
+
+  # Django Application
+  app:
+    container_name: duda_shop_django_app
+    restart: always 
     build: .
-    restart: always
-    env_file:
-      - .env-docker
-    ports: 
-      - "8000:8000"
     volumes:
-      - .:/app/
-    network_mode: host
+      - .:/django
+    ports:
+      - 8000:8000
+    image: app:django
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db 
+
+

@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-knahr6c-aw@e)rx_%)!r8-*rs!!ir^ud*b429sael*!ewx!&6y'
+SECRET_KEY = 'y09y1==5&_r6wy(-6c)jodebv^kja0yy5j$ne*iqiejrc7+vxl' 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG_DJ', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'django_celery_results',
 
     'store',
     'cart',
@@ -83,8 +84,12 @@ WSGI_APPLICATION = 'dudashop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dkdh3rvbhuo5f',
+        'USER': 'zccgyqnuaodkdw',
+        'PASSWORD': '4cc657ce1b7b2b06627bc94e2cd940021d82fd3da27c18374c189a54a99c3e42',
+        'HOST': 'ec2-54-159-175-38.compute-1.amazonaws.com',
+        'PORT': 5432,
     }
 }
 
@@ -111,9 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -142,4 +147,15 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 0,
 }
 
+# CART
 CART_SESSION_ID = 'cart'
+
+
+# CELERY
+CELERY_BROKER_URL = 'redis://:p8d6456ba1157464995660666f0dbc9478a6fe28e3de893a64f651b96bda9d027@ec2-52-71-44-118.compute-1.amazonaws.com:31230'
+
+CELERY_ACCEPT_CONTENT = ['json']
+
+CELERY_TASK_SERIALIZER = 'json'
+
+CELERY_RESULT_BACKEND = 'django-db'
