@@ -1,7 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from store.models import Product
-
+import ipdb
 
 class Cart(object):
     """Class to manipulate and to do some operations in the cart, like add product, remove,
@@ -21,10 +21,17 @@ class Cart(object):
     def add(self, product: Product, quantity=1) -> None:
         """This method should add a product to the cart or update its quantity"""
 
+        try: 
+            quantity = int(quantity)
+        except ValueError:
+            return
+
         product_id = str(product.id) # Transform to id to search in the cart dictionary.
         
         if product_id not in self.cart:
             self.cart[product_id] = {'quantity': quantity, 'price': str(product.price)}
+            self.save()
+
         
         else:
             self.cart[product_id]['quantity'] += quantity
@@ -34,17 +41,16 @@ class Cart(object):
     def update(self, product: Product, quantity: int) -> None:
         """Update the quantity of a product in the cart"""
 
+        try: 
+            quantity = int(quantity)
+        except ValueError:
+            return
+
         product_id = str(product.id)
 
         if product_id in self.cart:
-
-            try:
-                quantity = int(quantity)
-                self.cart[product_id]['quantity'] = quantity
-                self.save()
-
-            except ValueError:
-                pass
+            self.cart[product_id]['quantity'] = quantity
+            self.save()
 
 
     
