@@ -18,6 +18,9 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
 
+    # TODO
+    # Get the cart from the session, and iterate over then to catch the products and create an OrderItem for each product.
+    
 """
     def create(self, request):
         cart = Cart(request=request)
