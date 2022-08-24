@@ -20,6 +20,7 @@ class CartView(APIView):
         return Response(cart.__dict__['cart'], status=status.HTTP_200_OK)
 
 
+
     def delete(self, request, product_id):
         """Delete a product from cart"""
 

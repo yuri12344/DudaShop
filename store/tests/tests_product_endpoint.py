@@ -15,11 +15,4 @@ class ProductRequestApiTest(APITestCase):
         self.category = Category.objects.create(name='jeans', slug='jeans')
         
 
-    def test_can_add_products_to_cart_from_endpoint(self):
-        res = self.client.post('/api/v1/cart/1', data={'quantity': 1})
-        self.assertEqual(res.status_code, 200)
-
-    def test_can_update_products_in_cart_from_endpoint(self):
-        res = self.client.post('/api/v1/cart/1', data={'quantity': 1, 'override_quantity': 1})
-        self.assertEqual(res.status_code, 200)
 
