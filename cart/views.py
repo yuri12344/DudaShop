@@ -38,10 +38,13 @@ class CartView(APIView):
 
 
 
-    def delete(self, request, product_id):
+    def delete(self, request, product_id=None):
         """Delete a product from cart"""
-
         cart = Cart(request) # check if exists or create a new
+        
+        if product_id == None:
+            cart.clear()
+            
         product = get_object_or_404(Product, id=product_id)
         cart.remove(product)
         return Response(cart.__dict__['cart'], status=status.HTTP_200_OK)
