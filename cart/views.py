@@ -8,15 +8,32 @@ from rest_framework import status
 
 
 class CartView(APIView):
-    def post(self, request, product_id):
-        """Add a product to cart or update his quantity"""
+    def get(self, request):
+        """Get cart"""
+        cart = Cart(request)
+        return Response(cart.__dict__['cart'], status=status.HTTP_200_OK)
 
+
+    def post(self, request, product_id):
+        """Add product to cart or update his quantity"""
         cart = Cart(request)
         product = get_object_or_404(Product, id=product_id)
         serializer = CartAddOrUpdateProductSerializer(data=request.data)
         
         if serializer.is_valid():
-            cart.add_or_update(product=product, quantity=serializer.data['quantity'], override_quantity=serializer.data['override_quantity'])
+            cart.add(product=product, quantity=serializer.data['quantity'])
+
+        return Response(cart.__dict__['cart'], status=status.HTTP_200_OK)
+
+
+    def put(self, request, product_id):
+        cart = Cart(request)
+        product = get_object_or_404(Product, id=product_id)
+        serializer = CartAddOrUpdateProductSerializer(data=request.data)
+
+        if serializer.is_valid():
+            cart.update(product=product, quantity=serializer.data['quantity'])
+
         return Response(cart.__dict__['cart'], status=status.HTTP_200_OK)
 
 
@@ -30,7 +47,7 @@ class CartView(APIView):
         return Response(cart.__dict__['cart'], status=status.HTTP_200_OK)
 
     
-    def get(self, request):
-        """Get cart"""
-        cart = Cart(request)
-        return Response(cart.__dict__['cart'], status=status.HTTP_200_OK)
+
+
+
+        

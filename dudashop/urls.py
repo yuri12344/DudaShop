@@ -6,10 +6,11 @@ from orders.urls import router as order_router
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('auth/', include('rest_framework.urls')),
+    path('admin/',  admin.site.urls),
+    path('auth/',   include('rest_framework.urls')),
     path('api/v1/', include('cart.urls')),
     path('api/v1/', include(store_router.urls)),
+    path('api/v1/', include(order_router.urls)),
     path('api/v1/', include(order_router.urls)),
     # path('api/v1/', include('orders.urls')),
 ]

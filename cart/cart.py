@@ -9,33 +9,44 @@ class Cart(object):
 
     def __init__(self, request):
         """ Initialize the cart. """
-
         self.session = request.session
-
         # Check if cart is in session. If not, create an empty cart.
         cart = self.session.get(settings.CART_SESSION_ID)
-
         if not cart:
             # save an empty cart in the session
             cart = self.session[settings.CART_SESSION_ID] = {}
-
         self.cart = cart
 
 
-    def add_or_update(self, product: Product, quantity=1, override_quantity=False) -> None:
+    def add(self, product: Product, quantity=1) -> None:
         """This method should add a product to the cart or update its quantity"""
 
-        product_id = str(product.id)
+        product_id = str(product.id) # Transform to id to search in the cart dictionary.
         
         if product_id not in self.cart:
-            self.cart[product_id] = {'quantity': 0, 'price': str(product.price)}
-        
-        if override_quantity:
-            self.cart[product_id]['quantity'] = quantity
+            self.cart[product_id] = {'quantity': quantity, 'price': str(product.price)}
         
         else:
             self.cart[product_id]['quantity'] += quantity
             self.save()
+
+
+    def update(self, product: Product, quantity: int) -> None:
+        """Update the quantity of a product in the cart"""
+
+        product_id = str(product.id)
+
+        if product_id in self.cart:
+
+            try:
+                quantity = int(quantity)
+                self.cart[product_id]['quantity'] = quantity
+                self.save()
+
+            except ValueError:
+                pass
+
+
     
     def save(self):
         self.session.modified = True
