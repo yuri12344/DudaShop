@@ -163,11 +163,7 @@ CART_SESSION_ID = 'cart'
 
 
 # CELERY
-#CELERY_BROKER_URL = 'redis://:p8d6456ba1157464995660666f0dbc9478a6fe28e3de893a64f651b96bda9d027@ec2-52-71-44-118.compute-1.amazonaws.com:31230'
-
-# herokuredis = 'redis://p8d6456ba1157464995660666f0dbc9478a6fe28e3de893a64f651b96bda9d027@ec2-52-71-44-118.compute-1.amazonaws.com:31230/0'
-local_redis = 'redis://redis:6379/0'
-CELERY_BROKER_URL = local_redis
+CELERY_BROKER_URL = 'redis://redis:6379/0'
 
 CELERY_ACCEPT_CONTENT = ['json']
 

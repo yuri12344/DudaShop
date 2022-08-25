@@ -6,7 +6,7 @@ from celery import Celery
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dudashop.settings')
 
-
+    
 app = Celery('dudashop')
 
 app.config_from_object('django.conf:settings', namespace='CELERY')
