@@ -1,24 +1,23 @@
+from multiprocessing.sharedctypes import Value
 from celery import shared_task
-from django.core.mail import send_mail
-from .models import Order
+from time import sleep
+from random import randint
 
-@shared_task(bind=True)
-def order_created(order_id):
-    """
-    Task to send an e-mail notification when an order is
-    successfully created.
-    """
-
-    order = Order.objects.get(id=order_id)
+@shared_task(bind=True, max_retries=20, default_retry_delay=2)
+def process_payment(self, order_id):
     
-    subject = f'Order nr. {order.id}'
+    print('Processing customer order: ', order_id)
+    sleep(5)
+    x = randint(0, 10)
     
-    message = f"""Dear {order.first_name},\n\n' 
-                You have successfully placed an order.' 
-                Your order ID is {order.id}."""
+    if x > 9:
+        return 'OK'
 
+    else:
+        self.retry(countdown = 2  ** self.request.retries)
+        raise ValueError('Error')
+  
 
-    return send_mail(subject, message, 'admin@myshop.com',[order.email])
 
 """
 # @app.task(bind=True, max_retries=3, default_retry_delay=10, autoretry_for=(Exception,))

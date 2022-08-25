@@ -3,15 +3,21 @@ services:
 
   # Django Application
   app:
-    container_name: duda_shop_django_app
+    container_name: dudashop
     restart: always 
-    image: yuricaetano/dudashop:latest # Para compilar a local trocar para .
+    build: . 
     volumes:
       - .:/django
     ports:
       - 8000:8000
     command: python manage.py runserver 0.0.0.0:8000
+   
     depends_on:
-      - db 
-
-
+      - redis 
+      
+  # Redis
+  redis:
+      image: redis
+      command: redis-server
+      ports: 
+          - 6379:6379

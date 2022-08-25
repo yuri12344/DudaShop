@@ -1,3 +1,4 @@
+from secrets import choice
 from unicodedata import category
 from django.db import models
 
@@ -21,6 +22,30 @@ class Category(models.Model):
 class Product(models.Model):
     """Representation of product in the store"""
 
+    colors = (
+        ('red', 'Red'),
+        ('blue', 'Blue'),
+        ('green', 'Green'),
+        ('yellow', 'Yellow'),
+        ('black', 'Black'),
+        ('white', 'White'),
+        ('orange', 'Orange'),
+        ('pink', 'Pink'),
+        ('purple', 'Purple'),
+        ('brown', 'Brown'),
+        ('grey', 'Grey'),
+        ('silver', 'Silver'),
+        ('gold', 'Gold'),
+    )
+
+    sizes = (
+        ('S', 'Small'),
+        ('M', 'Medium'),
+        ('L', 'Large'),
+        ('XL', 'Extra Large'),
+        ('XXL', 'Extra Extra Large'),
+    )
+
     category =      models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     name =          models.CharField(max_length=200, db_index=True)  
     slug =          models.SlugField(max_length=200, db_index=True)
@@ -28,6 +53,9 @@ class Product(models.Model):
     description =   models.TextField(blank=True)
     price =         models.DecimalField(max_digits=10, decimal_places=2)
     available =     models.BooleanField(default=True)
+    color =         models.CharField(max_length=50, choices=colors, default='gold')
+    size =         models.CharField(max_length=50, choices=sizes, default='M')
+    sexo =          models.CharField(max_length=1, choices=(('M', 'Masculino'), ('F', 'Femenino'), ('U', 'Unisex')), default='U')
     created =       models.DateTimeField(auto_now_add=True)
     updated =       models.DateTimeField(auto_now=True)
 

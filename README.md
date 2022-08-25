@@ -2,16 +2,6 @@
 
 # How to use it
 
-- Docker
-
-- Local without docker
-
-python3 -m venv venv
-source venv/bin/activate
-
-pip install -r requirements.txt
-
-
 
 # Duda Shop - Online Clothing Store
 
@@ -28,7 +18,6 @@ $ # Get the code
 $ git clone git@github.com:yuri12344/DudaShop.git
 $ cd duda-shop
 ```
-
 
 <br />
 

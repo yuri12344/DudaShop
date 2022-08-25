@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from .serializers import OrderSerializer
 from .models import Order, OrderItem
 from cart.cart import Cart
+from .tasks import process_payment
 
 
 class OrderViewSet(viewsets.ModelViewSet):
@@ -33,6 +34,6 @@ class OrderViewSet(viewsets.ModelViewSet):
         result = serializer.data.copy()
         result['total_cost'] = int(order.get_total_cost())
         result['message'] = "Sucess, order created"
-
+        process_payment.delay(order.id)
         cart.clear()
         return Response(result, status=status.HTTP_201_CREATED)

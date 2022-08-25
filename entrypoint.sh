@@ -5,8 +5,11 @@ PYTHONDONTWRITEBYTECODE=1 python ./manage.py migrate --noinput
 
 # collect static files
 # python manage.py collectstatic --noinput
+celery -A dudashop worker --loglevel=INFO &
 
-PYTHONDONTWRITEBYTECODE=1  python ./manage.py runserver 0.0.0.0:8000
+PYTHONDONTWRITEBYTECODE=1  python ./manage.py runserver 0.0.0.0:8000 
+
+
 
 # Start Gunicorn processes
 #echo Starting Gunicorn.

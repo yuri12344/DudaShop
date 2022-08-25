@@ -82,6 +82,9 @@ WSGI_APPLICATION = 'dudashop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -92,7 +95,15 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+test = os.environ.get('TEST', False)
 
+if test:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -152,7 +163,11 @@ CART_SESSION_ID = 'cart'
 
 
 # CELERY
-CELERY_BROKER_URL = 'redis://:p8d6456ba1157464995660666f0dbc9478a6fe28e3de893a64f651b96bda9d027@ec2-52-71-44-118.compute-1.amazonaws.com:31230'
+#CELERY_BROKER_URL = 'redis://:p8d6456ba1157464995660666f0dbc9478a6fe28e3de893a64f651b96bda9d027@ec2-52-71-44-118.compute-1.amazonaws.com:31230'
+
+# herokuredis = 'redis://p8d6456ba1157464995660666f0dbc9478a6fe28e3de893a64f651b96bda9d027@ec2-52-71-44-118.compute-1.amazonaws.com:31230/0'
+local_redis = 'redis://redis:6379/0'
+CELERY_BROKER_URL = local_redis
 
 CELERY_ACCEPT_CONTENT = ['json']
 
