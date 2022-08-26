@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# apply database migrations
+# Apply run tests
 TEST=True python ./manage.py test
