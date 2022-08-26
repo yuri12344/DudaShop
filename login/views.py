@@ -2,17 +2,9 @@ import json
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from rest_framework.authentication import SessionAuthentication
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from django.middleware.csrf import get_token
 
-
-
-def get_csrf(request):
-    response = JsonResponse({"Info": "Success - Set CSRF cookie"})
-    response["X-CSRFToken"] = get_token(request)
-    return response
 
 
 @require_POST
@@ -33,11 +25,3 @@ def loginView(request):
     request.session.create()
     return JsonResponse({"info": "User logged in successfully"})
 
-
-class WhoAmIView(APIView):
-
-    @staticmethod
-    def get(request, format=None):
-        print(request.user.username)
-        session = request.session.__dict__
-        return JsonResponse({"username": request.user.username})

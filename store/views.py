@@ -1,4 +1,3 @@
-from unicodedata import category
 from .models import Category, Product
 from .serializers import CategorySerializer, ProductSerializer
 from rest_framework import viewsets

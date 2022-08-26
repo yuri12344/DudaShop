@@ -3,7 +3,6 @@ from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 from store.models import Category
 
-
 class CategoryRequestApiTest(APITestCase):
     def setUp(self):
         user = User.objects.create_superuser(username='user', password='password')
