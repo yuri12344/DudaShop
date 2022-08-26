@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Order, OrderItem
-import ipdb
 
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:

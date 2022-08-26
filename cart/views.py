@@ -5,9 +5,15 @@ from .serializers import CartAddOrUpdateProductSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
+
+
+    
 class CartView(APIView):
+
     def get(self, request):
         """Get cart"""
         cart = Cart(request)
@@ -16,13 +22,13 @@ class CartView(APIView):
 
     def post(self, request, product_id):
         """Add product to cart or update his quantity"""
+        authentication_classes = [SessionAuthentication]
+        permission_classes = [IsAuthenticated]
         cart = Cart(request)
         product = get_object_or_404(Product, id=product_id)
         serializer = CartAddOrUpdateProductSerializer(data=request.data)
-        
         if serializer.is_valid():
             cart.add(product=product, quantity=serializer.data['quantity'])
-
         return Response(cart.__dict__['cart'], status=status.HTTP_200_OK)
 
 

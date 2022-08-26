@@ -1,7 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
 from store.models import Product
-import ipdb
 
 class Cart(object):
     """Class to manipulate and to do some operations in the cart, like add product, remove,
@@ -12,6 +11,7 @@ class Cart(object):
         self.session = request.session
         # Check if cart is in session. If not, create an empty cart.
         cart = self.session.get(settings.CART_SESSION_ID)
+        
         if not cart:
             # save an empty cart in the session
             cart = self.session[settings.CART_SESSION_ID] = {}

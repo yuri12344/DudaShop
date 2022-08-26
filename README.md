@@ -74,3 +74,18 @@ $ python manage.py runserver
 At this point, the app runs at `http://127.0.0.1:8000/`. 
 
 <br />
+
+base_url = "http://dudashop-api.ddns.net/api/v1/"
+
+
+orders = {
+    "/order":
+        {
+	    "first_name": "Yuri",
+	    "last_name": "Caetano",
+	    "email": "yuuri.caetano@gmail.com",
+	    "address": "Rua Henriqe",
+	    "postal_code": "83060460",
+	    "city": "Sao Jose dos pinhais"
+    }
+}

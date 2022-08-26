@@ -1,7 +1,6 @@
 from rest_framework.test import APITestCase
 from store.models import Product, Category
 from cart.cart import Cart
-import ipdb
 
 class CartFunctionalityTests(APITestCase):
     def setUp(self):
