@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework.authtoken',
     'django_celery_results',
     'corsheaders',
 
@@ -59,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 CORS_ORIGIN_ALLOW_ALL = True  
 
@@ -88,26 +91,13 @@ WSGI_APPLICATION = 'dudashop.wsgi.application'
 
 
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dkdh3rvbhuo5f',
-        'USER': 'zccgyqnuaodkdw',
-        'PASSWORD': '4cc657ce1b7b2b06627bc94e2cd940021d82fd3da27c18374c189a54a99c3e42',
-        'HOST': 'ec2-54-159-175-38.compute-1.amazonaws.com',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-test = os.environ.get('TEST', False)
 
-if test:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -149,19 +139,6 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# DRF
-REST_FRAMEWORK = {
-    
-    #'DEFAULT_AUTHENTICATION_CLASSES': (
-    #    #'rest_framework.authentication.TokenAuthentication'
-    #    'rest_framework.authentication.SessionAuthentication',
-    #),
-    #'DEFAULT_PERMISSION_CLASSES': (
-    #    'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    #),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 0,
-}
 
 # CART
 CART_SESSION_ID = 'cart'

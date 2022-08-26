@@ -1,1 +1,3 @@
-python ./manage.py loaddata products/data.json  
+python ./manage.py loaddata data.json  
+
+python manage.py dumpdata --indent=2 --output=data.json

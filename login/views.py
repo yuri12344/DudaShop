@@ -33,13 +33,3 @@ def loginView(request):
     request.session.create()
     return JsonResponse({"info": "User logged in successfully"})
 
-
-class WhoAmIView(APIView):
-    authentication_classes = [SessionAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    @staticmethod
-    def get(request, format=None):
-        print(request.user.username)
-        session = request.session.__dict__
-        return JsonResponse({"username": request.user.username})

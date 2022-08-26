@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase
 from store.models import Product, Category
+import ipdb
 
 class CartEndPointTests(APITestCase):
     def setUp(self):

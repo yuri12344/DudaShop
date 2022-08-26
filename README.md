@@ -78,14 +78,41 @@ At this point, the app runs at `http://127.0.0.1:8000/`.
 base_url = "http://dudashop-api.ddns.net/api/v1/"
 
 
-orders = {
-    "/order":
-        {
-	    "first_name": "Yuri",
-	    "last_name": "Caetano",
-	    "email": "yuuri.caetano@gmail.com",
-	    "address": "Rua Henriqe",
-	    "postal_code": "83060460",
-	    "city": "Sao Jose dos pinhais"
-    }
+
+category = {
+	"/category":
+		{
+	    "name": "Shirts",
+	    "description": "Shirts"
+	}
 }
+
+product = {
+	"/product":
+		{
+	    "name": "Shirt",
+	    "description": "Shirt",
+	    "price": "100.00",
+	    "category": "1"
+	}
+}
+
+cart = {
+	"/cart/product_id":
+		{
+	    "quantity": "1"
+	}
+}
+
+
+order = {
+	"/order":
+		{
+	"first_name": "Yuri",
+	"last_name": "Caetano",
+	"email": "yuuri.caetano@gmail.com",
+	"address": "Rua Henrique",
+	"postal_code": "83060460",
+	"city": "Sao Jose dos pinhais"
+}
+

@@ -17,10 +17,12 @@ decorator==5.1.1
 Deprecated==1.2.13
 Django==4.0.4
 django-celery-results==2.4.0
+django-cors-headers==3.13.0
 djangorestframework==3.13.1
 executing==0.10.0
 h11==0.13.0
 idna==3.3
+ipdb==0.13.9
 ipython==8.4.0
 jedi==0.18.1
 kombu==5.2.4

@@ -1,7 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from store.models import Product
-
+import ipdb
 class Cart(object):
     """Class to manipulate and to do some operations in the cart, like add product, remove,
     save in memory and retrieve products."""
@@ -64,7 +64,6 @@ class Cart(object):
 
         if product_id in self.cart:
             del self.cart[product_id]
-        
         self.save()
 
 
