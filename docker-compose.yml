@@ -20,4 +20,4 @@ services:
       image: redis
       command: redis-server
       ports: 
-          - 6380:6380
+          - 6379:6380

@@ -27,6 +27,7 @@ executing==0.10.0
 h11==0.13.0
 idna==3.3
 inflection==0.5.1
+ipdb==0.13.9
 ipython==8.4.0
 itypes==1.2.0
 jedi==0.18.1

@@ -1,0 +1,544 @@
+swagger: '2.0'
+info:
+  title: Snippets API
+  description: Test description
+  termsOfService: https://www.google.com/policies/terms/
+  contact:
+    email: contact@snippets.local
+  license:
+    name: BSD License
+  version: v1
+host: 127.0.0.1:8000
+schemes:
+  - http
+basePath: /api/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /cart/:
+    get:
+      operationId: cart_list
+      description: Get cart
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - cart
+    post:
+      operationId: cart_create
+      description: Add product to cart or update his quantity
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - cart
+    put:
+      operationId: cart_update
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - cart
+    delete:
+      operationId: cart_delete
+      description: Delete a product from cart
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - cart
+    parameters: []
+  /cart/{product_id}:
+    get:
+      operationId: cart_read
+      description: Get cart
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - cart
+    post:
+      operationId: cart_create
+      description: Add product to cart or update his quantity
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+        - cart
+    put:
+      operationId: cart_update
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - cart
+    delete:
+      operationId: cart_delete
+      description: Delete a product from cart
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - cart
+    parameters:
+      - name: product_id
+        in: path
+        required: true
+        type: string
+  /category/:
+    get:
+      operationId: category_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+      tags:
+        - category
+    post:
+      operationId: category_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Category'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Category'
+      tags:
+        - category
+    parameters: []
+  /category/{id}/:
+    get:
+      operationId: category_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Category'
+      tags:
+        - category
+    put:
+      operationId: category_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Category'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Category'
+      tags:
+        - category
+    patch:
+      operationId: category_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Category'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Category'
+      tags:
+        - category
+    delete:
+      operationId: category_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - category
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this category.
+        required: true
+        type: integer
+  /category/{id}/products/:
+    get:
+      operationId: category_products
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Category'
+      tags:
+        - category
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this category.
+        required: true
+        type: integer
+  /order/:
+    get:
+      operationId: order_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Order'
+      tags:
+        - order
+    post:
+      operationId: order_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Order'
+      tags:
+        - order
+    parameters: []
+  /order/{id}/:
+    get:
+      operationId: order_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Order'
+      tags:
+        - order
+    put:
+      operationId: order_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Order'
+      tags:
+        - order
+    patch:
+      operationId: order_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Order'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Order'
+      tags:
+        - order
+    delete:
+      operationId: order_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - order
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this order.
+        required: true
+        type: integer
+  /product/:
+    get:
+      operationId: product_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+      tags:
+        - product
+    post:
+      operationId: product_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Product'
+      tags:
+        - product
+    parameters: []
+  /product/{id}/:
+    get:
+      operationId: product_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Product'
+      tags:
+        - product
+    put:
+      operationId: product_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Product'
+      tags:
+        - product
+    patch:
+      operationId: product_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Product'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Product'
+      tags:
+        - product
+    delete:
+      operationId: product_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - product
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this product.
+        required: true
+        type: integer
+  /whoami/:
+    get:
+      operationId: whoami_list
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+        - whoami
+    parameters: []
+definitions:
+  Category:
+    required:
+      - name
+      - slug
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 50
+        minLength: 1
+      slug:
+        title: Slug
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        maxLength: 200
+        minLength: 1
+  OrderItem:
+    required:
+      - product
+      - price
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      product:
+        title: Product
+        type: integer
+      price:
+        title: Price
+        type: string
+        format: decimal
+      quantity:
+        title: Quantity
+        type: integer
+  Order:
+    required:
+      - first_name
+      - last_name
+      - email
+      - address
+      - postal_code
+      - city
+    type: object
+    properties:
+      first_name:
+        title: First name
+        type: string
+        maxLength: 50
+        minLength: 1
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 50
+        minLength: 1
+      email:
+        title: Email
+        type: string
+        format: email
+        maxLength: 254
+        minLength: 1
+      address:
+        title: Address
+        type: string
+        maxLength: 250
+        minLength: 1
+      postal_code:
+        title: Postal code
+        type: string
+        maxLength: 20
+        minLength: 1
+      city:
+        title: City
+        type: string
+        maxLength: 100
+        minLength: 1
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/OrderItem'
+        readOnly: true
+  Product:
+    required:
+      - name
+      - slug
+      - price
+      - category
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Name
+        type: string
+        maxLength: 200
+        minLength: 1
+      slug:
+        title: Slug
+        type: string
+        format: slug
+        pattern: ^[-a-zA-Z0-9_]+$
+        maxLength: 200
+        minLength: 1
+      image:
+        title: Image
+        type: string
+        maxLength: 200
+        x-nullable: true
+      description:
+        title: Description
+        type: string
+      price:
+        title: Price
+        type: string
+        format: decimal
+      available:
+        title: Available
+        type: boolean
+      created:
+        title: Created
+        type: string
+        format: date-time
+        readOnly: true
+      updated:
+        title: Updated
+        type: string
+        format: date-time
+        readOnly: true
+      category:
+        title: Category
+        type: integer

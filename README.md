@@ -1,20 +1,15 @@
 # Duda Shop Online Clothing Store
 
-# How to use it
+This is the backend for the Duda Shop. Made with Django and Python, fast and scalable.
 
-
-# Duda Shop - Online Clothing Store
-
-This is the backend for the Duda Shop. Made with Django and Python, fast and escalable.
-
-To start project you will need to have virtual env with Python3 at least
+To start the project you will need to have at least a virtual env with Python3
 
 ## ✨ How to use it
 
 > Download the code 
 
 ```bash
-$ # Get the code
+$ # Get the repository
 $ git clone git@github.com:yuri12344/DudaShop.git
 $ cd duda-shop
 ```
@@ -78,41 +73,67 @@ At this point, the app runs at `http://127.0.0.1:8000/`.
 base_url = "http://dudashop-api.ddns.net/api/v1/"
 
 
+# Listar produtos
+"http://dudashop-api.ddns.net/api/v1/product"
 
-category = {
-	"/category":
-		{
-	    "name": "Shirts",
-	    "description": "Shirts"
-	}
-}
 
-product = {
-	"/product":
-		{
-	    "name": "Shirt",
-	    "description": "Shirt",
-	    "price": "100.00",
-	    "category": "1"
-	}
-}
+# Listar categorias
+"http://dudashop-api.ddns.net/api/v1/category"
 
-cart = {
-	"/cart/product_id":
-		{
-	    "quantity": "1"
-	}
+
+# Listar produtos da categoria
+"http://dudashop-api.ddns.net/api/v1/category/{CATEGORY_ID}/products/"
+
+
+# Adicionar produto ao carrinho
+Method: POST
+"http://dudashop-api.ddns.net/api/v1/cart/add/{PRODUCT_ID}"
+body = {
+	"quantity": 1
 }
 
 
-order = {
-	"/order":
-		{
+# Listar produtos do carrinho 
+Method: POST
+
+"http://dudashop-api.ddns.net/api/v1/cart"
+
+
+# Atualizar o carrinho
+Method: PUT
+
+"http://dudashop-api.ddns.net/api/v1/cart/update/{PRODUCT_ID}"
+body = {
+	"quantity": 1
+}
+ at least
+# Exclui 1 produto do carrinho
+Method: DELETE
+
+"http://dudashop-api.ddns.net/api/v1/cart/delete/{PRODUCT_ID}"
+
+
+# Limpar carrinho
+Method: DELETE
+
+"http://dudashop-api.ddns.net/api/v1/cart/"
+
+
+# Criar uma ordem
+Method: POST
+
+"http://dudashop-api.ddns.net/api/v1/order"
+
+body = {
 	"first_name": "Yuri",
 	"last_name": "Caetano",
 	"email": "yuuri.caetano@gmail.com",
-	"address": "Rua Henrique",
+	"address": "Rua Henriqe",
 	"postal_code": "83060460",
 	"city": "Sao Jose dos pinhais"
 }
 
+# Listar todas as ordens
+Method: GET
+
+"http://dudashop-api.ddns.net/api/v1/order"
