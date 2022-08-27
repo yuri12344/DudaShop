@@ -4,6 +4,19 @@ This is the backend for the Duda Shop. Made with Django and Python, fast and sca
 
 To start the project you will need to have at least a virtual env with Python3
 
+# Diagrama de relacionamentos
+https://drive.google.com/file/d/1GO0PJgiNuYH_Xnj6uaUspSXzESdKm4Ji/view?usp=sharing
+
+# Fluxo arquitetura do projeto
+https://whimsical.com/how-duda-shop-is-build-KSHNtQjmo5HG2CLEjaNsfY
+
+# Projeto online
+http://dudashop-api.ddns.net/admin/
+
+u: dudashop
+s: dudashop123
+
+
 ## ✨ How to use it
 
 > Download the code 
